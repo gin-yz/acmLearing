@@ -1,6 +1,5 @@
 package com.cjs.acmLearing.GreedyLearn;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,8 +22,7 @@ public class CitySelectorDemo {
         broadcasts.put("k5", hashSet5);
 
         //未覆盖的地区
-        HashSet<String> allAreas = new HashSet<String>() {
-        };
+        HashSet<String> allAreas = new HashSet<String>();
 
         allAreas.addAll(hashSet1);
         allAreas.addAll(hashSet2);

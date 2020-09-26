@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class mutilDPExample {
+public class MutilDPExample {
     public static void main(String[] args) {
         int[] w = {1,4,3};
         int[] val = {1500, 3000, 2000};
         int[] num_lim = {1,1,1}; //每个商品的数量限制
 
         int n = val.length; //商品数量
-        int m = 10; //背包容量
+        int m = 100; //背包容量
 
         int[][] v = new int[n + 1][m + 1];
         int[][] path = new int[n + 1][m + 1];

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class fullDPExample {
+public class FullDPExample {
     public static void main(String[] args) {
         int[] w = {2,3,4};
         int[] val = {2,3,4};

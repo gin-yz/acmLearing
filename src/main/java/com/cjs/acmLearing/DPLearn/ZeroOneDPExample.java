@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class zeroOneDPExample {
+public class ZeroOneDPExample {
     public static void main(String[] args) {
 
         int[] w = {1, 4, 3};
