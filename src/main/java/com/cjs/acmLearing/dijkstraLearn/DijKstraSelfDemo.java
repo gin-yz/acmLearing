@@ -1,6 +1,7 @@
 /*
-* 使用到了ＢＦＳ的思想
-* */
+ * 使用到了ＢＦＳ的思想
+ * 计算一个点到其他点的最短路经
+ * */
 
 package com.cjs.acmLearing.dijkstraLearn;
 
@@ -52,7 +53,6 @@ public class DijKstraSelfDemo {
         System.out.println(Arrays.toString(dijKstraSelfDemo.preVertex));
 
 
-
     }
 
     private void dijkstra(int v) {
@@ -64,8 +64,9 @@ public class DijKstraSelfDemo {
             for (int i = 0; i < graph.getVertexNum(); i++) {
                 if (i == vv) continue;
 
-                if (getDistance(v, vv, i) < distance[i]) {
-                    distance[i] = getDistance(v, vv, i);
+                int tempDistance;
+                if ((tempDistance = getDistance(vv, i)) < distance[i]) {
+                    distance[i] = tempDistance;
                     if (!isVisited[i]) tempList.add(i);
                     isVisited[i] = true;
                     preVertex[i] = vv;
@@ -74,7 +75,7 @@ public class DijKstraSelfDemo {
 
         }
 
-        IntStream.range(0,graph.getVertexNum()).forEach(this::getRoute);
+        IntStream.range(0, graph.getVertexNum()).forEach(this::getRoute);
 
     }
 
@@ -84,26 +85,27 @@ public class DijKstraSelfDemo {
      * @param i  判断目前的点到其他的点
      * @return
      */
-    private int getDistance(int v, int vv, int i) {
+    private int getDistance(int vv, int i) {
         int sum = 0;
 
         if (graph.getMatrix()[vv][i] != N) {
             sum += graph.getMatrix()[vv][i];
-            if (v != vv) sum += distance[vv];
+//            if (vv != startVertex) sum += distance[vv];
+            sum += distance[vv];
         } else return N;
 
         return sum;
 
     }
 
-    private void getRoute(int v){
-        LinkedList<Integer> templist = new LinkedList();
+    private void getRoute(int v) {
+        LinkedList<Integer> templist = new LinkedList<>();
         StringBuffer stringBuffer = new StringBuffer();
-        while (v!=startVertex){
+        while (v != startVertex) {
             templist.addFirst(v);
             v = this.preVertex[v];
         }
-        for (int i :templist){
+        for (int i : templist) {
             stringBuffer.append("=>>");
             stringBuffer.append(this.graph.getVertex()[i]);
         }
