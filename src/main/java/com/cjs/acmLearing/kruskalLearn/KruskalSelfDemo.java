@@ -73,7 +73,7 @@ public class KruskalSelfDemo {
 
         //初始化ｅｎｄ数组,存储顶点
         end = new int[vertexs.length];
-        Arrays.fill(end,-1);
+        Arrays.fill(end, -1);
     }
 
     public void kruskal() {
@@ -83,13 +83,13 @@ public class KruskalSelfDemo {
             int first = getEnd(eData.start);
             int end = getEnd(eData.end);
 
-            if (first!=end){
+            if (first != end) {
                 this.end[end] = first;
                 visitedEdgeList.add(eData);
             }
 
         }
-        visitedEdgeList.stream().map(obj->vertexs[obj.start]+""+vertexs[obj.end]+" weight:"+ obj.weight).forEach(System.out::println);
+        visitedEdgeList.stream().map(obj -> vertexs[obj.start] + "" + vertexs[obj.end] + " weight:" + obj.weight).forEach(System.out::println);
     }
 
     //查找节点的顶点，
@@ -114,7 +114,6 @@ class EData {
         this.end = end;
         this.weight = weight;
     }
-
 
 
 }

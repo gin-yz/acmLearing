@@ -33,9 +33,9 @@ public class FloydSelfDemo {
     }
 
     private void floyd() {
-        for (int k = 0; k < vertex.length; k++) {
-            for (int i = 0; i < vertex.length; i++) {
-                for (int j = 0; j < vertex.length; j++) {
+        for (int k = 0; k < vertex.length; k++) { //经过的边
+            for (int i = 0; i < vertex.length; i++) { //起点
+                for (int j = 0; j < vertex.length; j++) { //终点
                     if (k == i || k == j || i == j) continue;
                     if (maxtrix[i][k] != INF && maxtrix[k][j] != INF && maxtrix[i][k] + maxtrix[k][j] < maxtrix[i][j]) {
                         maxtrix[i][j] = maxtrix[i][k] + maxtrix[k][j];

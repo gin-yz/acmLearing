@@ -80,7 +80,6 @@ public class DijKstraSelfDemo {
     }
 
     /**
-     * @param v  开始的点
      * @param vv 　目前的点
      * @param i  判断目前的点到其他的点
      * @return
