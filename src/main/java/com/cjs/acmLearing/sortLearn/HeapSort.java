@@ -40,7 +40,7 @@ public class HeapSort {
         }
 
         for (int j = arr.length - 1; j > 0; j--) {
-            swap(arr, j,0);//交换根结点和动态的最后一个元素
+            swap(arr, j, 0);//交换根结点和动态的最后一个元素
             adjustHeap(arr, 0, j);//调整树，使得重新成为ｉ一个大顶堆
         }
     }
@@ -62,21 +62,35 @@ public class HeapSort {
             if (temp < arr[i]) {//目前的根结点和子结点最大的值比较
                 arr[index] = arr[i]; //将目前的根结点赋值最大值
                 index = i;//记录一下目前沉底的下标，
-            }else break;
+            } else break;
         }
         arr[index] = temp;//将最终沉底的变量赋值这个子树的根
     }
+
     //我写的，好理解
     private static void adjustHeap(int[] arr, int index, int len) {
         for (int i = index * 2 + 1; i < len; i = i * 2 + 1) {
             if (i + 1 < len && arr[i] < arr[i + 1]) i++;//找出左右子结点更大的下标
             if (arr[index] < arr[i]) {//目前的根结点和子结点最大的值比较
-                swap(arr,index,i);//若当前的根结点小于子结点的值，交换
+                swap(arr, index, i);//若当前的根结点小于子结点的值，交换
                 index = i;//迭代，只对调整过的子树进行改变.
-            }else break; //说明根结点比子结点都小，无需调整
+            } else break; //说明根结点比子结点都小，无需调整
         }
     }
-    private static void swap(int[] arr, int a,int b) {
+
+    //递归实现
+    private static void adjustHeapRe(int[] arr, int index, int len) {
+        int maxIndex = index * 2 + 1;
+
+        if (maxIndex + 1 < len && arr[maxIndex] < arr[maxIndex + 1]) maxIndex++;
+        if (maxIndex < len && arr[index] < arr[maxIndex]) {
+            swap(arr, maxIndex, index);
+            adjustHeapRe(arr, maxIndex, len);
+        }
+
+    }
+
+    private static void swap(int[] arr, int a, int b) {
         int temp = arr[a];
         arr[a] = arr[b];
         arr[b] = temp;
