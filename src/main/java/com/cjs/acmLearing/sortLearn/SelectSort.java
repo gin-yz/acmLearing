@@ -1,3 +1,6 @@
+/*
+* 遍历，每次选最小的元素，放至前排末尾
+* */
 package com.cjs.acmLearing.sortLearn;
 
 import java.util.Arrays;
