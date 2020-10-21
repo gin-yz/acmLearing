@@ -71,7 +71,7 @@ public class HeapSort {
         for (int i = index * 2 + 1; i < len; i = i * 2 + 1) {
             if (i + 1 < len && arr[i] < arr[i + 1]) i++;//找出左右子结点更大的下标
             if (arr[index] < arr[i]) {//目前的根结点和子结点最大的值比较
-                swap(arr,index,i);
+                swap(arr,index,i);//若当前的根结点小于子结点的值，交换
                 index = i;//迭代，只对调整过的子树进行改变.
             }else break; //说明根结点比子结点都小，无需调整
         }
