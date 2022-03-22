@@ -1,17 +1,18 @@
-package com.cjs.acmLearing.DPLearn;
+package com.cjs.acmLearing.DPLearn.otherMethod;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class FullDPExample {
+public class MutilDPExample {
     public static void main(String[] args) {
-        int[] w = {2,3,4};
+        int[] w = {3,4,5};
         int[] val = {2,3,4};
+        int[] num_lim = {4,3,2}; //每个商品的数量限制
 
         int n = val.length; //商品数量
-        int m = 10; //背包容量
+        int m = 15; //背包容量
 
         int[][] v = new int[n + 1][m + 1];
         int[][] path = new int[n + 1][m + 1];
@@ -26,9 +27,8 @@ public class FullDPExample {
 
         for (int i = 1; i < v.length; i++) {
             for (int j = 1; j < v[i].length; j++) {
-                for (int k = 0; k <= m / w[i - 1]; k++) {
-                    if (k * w[i - 1] > j) v[i][j] = v[i][j]; //若大于，后一次的值等于前一次的k*的赋值,第一次的赋值上一行的值为ｋ=0时，自动跳到else行
-                    else {
+                for (int k = 0; k <= num_lim[i-1]; k++) {
+                    if (k * w[i - 1] <= j) {
                         v[i][j] = Math.max(v[i][j], v[i - 1][j - k * w[i - 1]] + k * val[i - 1]);
                         if ((v[i - 1][j - k * w[i - 1]] + k * val[i - 1]) > v[i-1][j]) path[i][j] = k;
                     }
@@ -52,6 +52,7 @@ public class FullDPExample {
             }
             i--;
         }
+
 
     }
 }

@@ -6,7 +6,7 @@ import java.util.Random;
 public class TestHeapSort {
     public static void main(String[] args) {
         int[] arr = new int[20];
-        Random random = new Random(500);
+        Random random = new Random(428);
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(100);
         }
@@ -20,25 +20,26 @@ public class TestHeapSort {
     }
 
     private static void heapSort(int[] arr) {
-        for (int i = arr.length / 2 - 1; i > 0; i--) {
-            adjust(arr, i, arr.length);
-        }
+        for (int i = arr.length / 2 - 1; i >= 0; i--) adjust(arr, i, arr.length);
+
         for (int i = arr.length - 1; i > 0; i--) {
-            int temp = arr[0];
-            arr[0] = arr[i];
-            arr[i] = temp;
+            swap(arr, i, 0);
             adjust(arr, 0, i);
         }
     }
 
     private static void adjust(int[] arr, int index, int length) {
-//        int temp = arr[index];
-        while (index<length){
-            if (index*2+1<length){
-                if (index*2+2<length && arr[index*2+1]<arr[index*2+2]){
-
-                }
-            }
+        int i = index * 2 + 1;
+        if (i + 1 < length && arr[i + 1] > arr[i]) i++;
+        if (i < length && arr[index] < arr[i]) {
+            swap(arr, index, i);
+            adjust(arr, i, length);
         }
+    }
+
+    private static void swap(int[] arr, int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
     }
 }
