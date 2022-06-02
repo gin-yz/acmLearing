@@ -28,7 +28,6 @@ public class ShellSort {
                 }
                 if (index + gap != i) arr[index + gap] = insertVal;
             }
-
         }
 
     }

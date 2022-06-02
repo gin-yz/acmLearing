@@ -39,9 +39,9 @@ public class HeapSortSmall {
         for (int index = startIndex * 2 + 1; index < length; index = startIndex * 2 + 1) {
             if (index + 1 < length && arr[index] < arr[index + 1]) index++;
             if (arr[startIndex] < arr[index]) {
-                swap(startIndex,index,arr);
+                swap(startIndex, index, arr);
                 startIndex = index;
-            }else {
+            } else {
                 break;
             }
         }
