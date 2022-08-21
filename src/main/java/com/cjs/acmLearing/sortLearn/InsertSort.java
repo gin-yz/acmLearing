@@ -1,5 +1,6 @@
 /***
  * 插入排序
+ * 基本思路：从第二元素开始，往前找，插入到合适的位置，一个一个对比的过程中，也要移位
  */
 package com.cjs.acmLearing.sortLearn;
 
